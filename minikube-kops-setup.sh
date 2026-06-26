@@ -17,6 +17,10 @@ curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s htt
 chmod +x kops
 sudo mv kops /usr/local/bin/kops
 
+#kops cluster create
+export KOPS_STATE_STORE=s3://one11piece00-kops
+kops create cluster --name sri.k8s.local --zones=us-east-2a,us-east-2b --control-plane-count=1 --control-plane-size=c7i-flex.large --node-size=t3.micro --node-count=2 --image=ami-0e5497a77ef21b5ac
+
 ##Kubens
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
