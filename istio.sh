@@ -10,6 +10,10 @@ kubectl label namespace default istio-injection=enabled
 istioctl install --set profile=demo -y
 istioctl install --set profile=deafult -y #prod usecase no Egress Gateway
 istioctl install --set profile=empty -y #complete customization enable based on need
+
+#deploy bookinfo app
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+
 #Expose svc's
 kubectl patch svc productpage -p '{"spec": {"type": "LoadBalancer"}}'
 #Note: url:9080/productpage to view page
