@@ -11,6 +11,11 @@ istioctl install --set profile=demo -y
 istioctl install --set profile=deafult -y #prod usecase no Egress Gateway
 istioctl install --set profile=empty -y #complete customization enable based on need
 
+#Enable egress
+istioctl install --set profile=default \
+  --set components.egressGateways[0].name=istio-egressgateway \
+  --set components.egressGateways[0].enabled=true -y
+
 #deploy bookinfo app
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 
