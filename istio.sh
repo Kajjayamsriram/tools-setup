@@ -8,7 +8,8 @@ kubectl label namespace default istio-injection=enabled
 
 #Using demo profile
 istioctl install --set profile=demo -y
-
+istioctl install --set profile=deafult -y #prod usecase no Egress Gateway
+istioctl install --set profile=empty -y #complete customation enable based on need
 #Expose svc's
 kubectl patch svc productpage -p '{"spec": {"type": "LoadBalancer"}}'
 #Note: url:9080/productpage to view page
